@@ -1,5 +1,5 @@
 @XmlSchema(
-        namespace = "atom",
+        namespace = "http://www.w3.org/2005/Atom",
         elementFormDefault = XmlNsForm.QUALIFIED,
         xmlns = {
                 @javax.xml.bind.annotation.XmlNs(prefix = "atom", namespaceURI="http://www.w3.org/2005/Atom"),
