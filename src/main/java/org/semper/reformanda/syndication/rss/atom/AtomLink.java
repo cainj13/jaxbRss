@@ -1,7 +1,5 @@
 package org.semper.reformanda.syndication.rss.atom;
 
-import com.sun.xml.internal.txw2.annotation.XmlElement;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,8 +16,9 @@ public class AtomLink {
     }
 
     @XmlAttribute
-    public void setHref(String href) {
+    public AtomLink setHref(String href) {
         this.href = href;
+        return this;
     }
 
     public String getRel() {
@@ -27,8 +26,9 @@ public class AtomLink {
     }
 
     @XmlAttribute
-    public void setRel(String rel) {
+    public AtomLink setRel(String rel) {
         this.rel = rel;
+        return this;
     }
 
     public String getType() {
@@ -36,7 +36,8 @@ public class AtomLink {
     }
 
     @XmlAttribute
-    public void setType(String type) {
+    public AtomLink setType(String type) {
         this.type = type;
+        return this;
     }
 }

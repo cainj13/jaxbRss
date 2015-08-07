@@ -9,15 +9,17 @@ public class Owner {
         return name;
     }
 
-    public void setName(String name) {
+    public Owner setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public Owner setEmail(String email) {
         this.email = email;
+        return this;
     }
 }

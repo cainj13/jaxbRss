@@ -34,80 +34,90 @@ public class Channel {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Channel setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getLink() {
         return link;
     }
 
-    public void setLink(String link) {
+    public Channel setLink(String link) {
         this.link = link;
+        return this;
     }
 
     public Date getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(Date pubDate) {
+    public Channel setPubDate(Date pubDate) {
         this.pubDate = pubDate;
+        return this;
     }
 
     public Date getLastBuildDate() {
         return lastBuildDate;
     }
 
-    public void setLastBuildDate(Date lastBuildDate) {
+    public Channel setLastBuildDate(Date lastBuildDate) {
         this.lastBuildDate = lastBuildDate;
+        return this;
     }
 
     public int getTtl() {
         return ttl;
     }
 
-    public void setTtl(int ttl) {
+    public Channel setTtl(int ttl) {
         this.ttl = ttl;
+        return this;
     }
 
     public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public Channel setLanguage(String language) {
         this.language = language;
+        return this;
     }
 
     public String getCopyright() {
         return copyright;
     }
 
-    public void setCopyright(String copyright) {
+    public Channel setCopyright(String copyright) {
         this.copyright = copyright;
+        return this;
     }
 
     public String getWebMaster() {
         return webMaster;
     }
 
-    public void setWebMaster(String webMaster) {
+    public Channel setWebMaster(String webMaster) {
         this.webMaster = webMaster;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Channel setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public Channel setImage(String image) {
         this.image = image;
+        return this;
     }
 
     @XmlElement(namespace = "http://www.w3.org/2005/Atom", name = "link")
@@ -115,8 +125,9 @@ public class Channel {
         return atomLink;
     }
 
-    public void setAtomLink(AtomLink atomLink) {
+    public Channel setAtomLink(AtomLink atomLink) {
         this.atomLink = atomLink;
+        return this;
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
@@ -124,8 +135,9 @@ public class Channel {
         return owner;
     }
 
-    public void setOwner(Owner owner) {
+    public Channel setOwner(Owner owner) {
         this.owner = owner;
+        return this;
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
@@ -133,8 +145,9 @@ public class Channel {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public Channel setAuthor(String author) {
         this.author = author;
+        return this;
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
@@ -142,8 +155,9 @@ public class Channel {
         return explicit;
     }
 
-    public void setExplicit(String explicit) {
+    public Channel setExplicit(String explicit) {
         this.explicit = explicit;
+        return this;
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd", name = "image")
@@ -151,8 +165,9 @@ public class Channel {
         return itunesImage;
     }
 
-    public void setItunesImage(String itunesImage) {
+    public Channel setItunesImage(String itunesImage) {
         this.itunesImage = itunesImage;
+        return this;
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
@@ -160,7 +175,8 @@ public class Channel {
         return category;
     }
 
-    public void setCategory(String category) {
+    public Channel setCategory(String category) {
         this.category = category;
+        return this;
     }
 }
