@@ -1,7 +1,5 @@
 package org.semper.reformanda.syndication.rss.atom;
 
-import com.sun.xml.internal.txw2.annotation.XmlElement;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
