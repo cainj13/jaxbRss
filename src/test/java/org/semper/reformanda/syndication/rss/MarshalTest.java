@@ -2,6 +2,8 @@ package org.semper.reformanda.syndication.rss;
 
 import org.junit.Test;
 import org.semper.reformanda.syndication.rss.atom.AtomLink;
+import org.semper.reformanda.syndication.rss.itunes.Category;
+import org.semper.reformanda.syndication.rss.itunes.ItunesCategory;
 import org.semper.reformanda.syndication.rss.itunes.Owner;
 
 import javax.xml.bind.JAXBContext;
@@ -10,43 +12,45 @@ import java.util.Date;
 
 public class MarshalTest {
 
+    private static final Date currentDate = new Date();
+
     @Test
     public void marshalStuff() throws Exception {
         final Channel channel = new Channel();
-        channel.setTitle("My title!");
-        channel.setLink("http://www.gracecommunitybaptist.org");
-        channel.setPubDate(new Date());
-        channel.setLastBuildDate(new Date());
+        channel.setTitle("Test Podcast");
+        channel.setLink("http://www.theTestPodcast.com");
+        channel.setPubDate(currentDate);
+        channel.setLastBuildDate(currentDate);
         channel.setTtl(60);
         channel.setLanguage("en");
         channel.setCopyright("All Rights Reserved");
-        channel.setWebMaster("mail@graceCommunityBaptist.org");
-        channel.setDescription("This is a podcast!");
-        channel.setImage("http://BLAHIMAGE");
+        channel.setWebMaster("mail@theTestPodcast.com");
+        channel.setDescription("This is a test block of text, meant to give a more verbose description of what the podcast is about.");
+        channel.setImage("http://www.theTestPodcast.com/images/testlogo.png");
 
         final AtomLink atomLink = new AtomLink();
-        atomLink.setHref("http://www.google.com");
+        atomLink.setHref("http://www.theTestPodcast.com/rss");
         atomLink.setRel("self");
         atomLink.setType("application/xml");
         channel.setAtomLink(atomLink);
 
         final Owner owner = new Owner();
-        owner.setName("Grace Community Baptist");
-        owner.setEmail("mail-owner@gcgc.org");
+        owner.setName("Test Podcast Owner");
+        owner.setEmail("mail@theTestPodcast.com");
         channel.setOwner(owner);
-        channel.setAuthor("Authoer Name");
+        channel.setAuthor("Test Podcast Author");
         channel.setExplicit("no");
-        channel.setItunesImage("IMAGEURL");
-        channel.setCategory("Business");
+        channel.setItunesImage("http://www.theTestPodcast.com/images/testlogo.png");
+        final Category category = new Category();
+        category.setText(ItunesCategory.Business.value());
+        channel.setCategory(category); // TODO enumerate types
 
         final Rss rss = new Rss();
         rss.setChannel(channel);
         JAXBContext jaxbContext = JAXBContext.newInstance(Rss.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-        // output pretty printed
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
         jaxbMarshaller.marshal(rss, System.out);
     }
 }

@@ -1,6 +1,7 @@
 package org.semper.reformanda.syndication.rss;
 
 import org.semper.reformanda.syndication.rss.atom.AtomLink;
+import org.semper.reformanda.syndication.rss.itunes.Category;
 import org.semper.reformanda.syndication.rss.itunes.Owner;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -28,7 +29,7 @@ public class Channel {
     private String author;
     private String explicit; // TODO boolean/enum
     private String itunesImage; // TODO URI?
-    private String category; // TODO sub-cats
+    private Category category; // TODO sub-cats
 
     public String getTitle() {
         return title;
@@ -171,11 +172,11 @@ public class Channel {
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public Channel setCategory(String category) {
+    public Channel setCategory(Category category) {
         this.category = category;
         return this;
     }

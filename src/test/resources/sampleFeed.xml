@@ -2,7 +2,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
     <channel>
         <atom:link href="http://www.mySampleRss.com" rel="self" type="application/xml"/>
-        <itunes:author>PodTestAuthor</itunes:author>
+        <itunes:author>Test Podcast Author</itunes:author>
         <itunes:category>Business</itunes:category>
         <copyright>All Rights Reserved</copyright>
         <description>This is a test podcast syndication XML sample meant to demonstrate basic marshalling/unmarshalling functionality</description>
