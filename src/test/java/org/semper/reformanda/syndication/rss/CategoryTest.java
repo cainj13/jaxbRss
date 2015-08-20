@@ -12,8 +12,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
@@ -37,23 +39,44 @@ public class CategoryTest {
         category.setText(categoryName);
         rss.getChannel().setCategory(category);
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(Rss.class);
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        final Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-        jaxbMarshaller.marshal(rss, document);
-
-        NamespaceContext context = new SimpleNamespaceContext(Collections.singletonMap("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd"));
-        XpathEngine engine = XMLUnit.newXpathEngine();
-        engine.setNamespaceContext(context);
+        final Document document = getDocument();
+        final XpathEngine engine = getXpathEngine();
 
         NodeList matchingNodes = engine.getMatchingNodes(String.format("/rss/channel/itunes:category[@text='%s']", categoryName), document);
         assertEquals("Could not find itunes category attribute", 1, matchingNodes.getLength());
     }
 
     @Test
-    public void shouldNextSubcategoriesAsElementsUnderParentCategory() {
-        // TODO
+    public void shouldNextSubcategoriesAsElementsUnderParentCategory() throws Exception {
+        final Category category = new Category();
+        category.setText(ItunesCategory.Business.value());
+        final Category subCategory = new Category();
+        subCategory.setText(ItunesCategory.Business.careers);
+        category.getSubcategories().add(subCategory);
+        rss.getChannel().setCategory(category);
+
+        final Document document = getDocument();
+        final XpathEngine engine = getXpathEngine();
+
+        final String subcategoryXpath = String.format("/rss/channel/itunes:category[@text='%s']/itunes:category[@text='%s']", ItunesCategory.Business.value(), ItunesCategory.Business.careers);
+        NodeList matchingNodes = engine.getMatchingNodes(subcategoryXpath, document);
+        assertEquals("Could not find itunes subcategory attribute", 1, matchingNodes.getLength());
+    }
+
+    private XpathEngine getXpathEngine() {
+        final NamespaceContext context = new SimpleNamespaceContext(Collections.singletonMap("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd"));
+        final XpathEngine engine = XMLUnit.newXpathEngine();
+        engine.setNamespaceContext(context);
+        return engine;
+    }
+
+    private Document getDocument() throws JAXBException, ParserConfigurationException {
+        final JAXBContext jaxbContext = JAXBContext.newInstance(Rss.class);
+        final Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        final Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+        jaxbMarshaller.marshal(rss, document);
+        return document;
     }
 }
