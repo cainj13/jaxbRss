@@ -26,7 +26,12 @@ public class MarshalTest {
         channel.setCopyright("All Rights Reserved");
         channel.setWebMaster("mail@theTestPodcast.com");
         channel.setDescription("This is a test block of text, meant to give a more verbose description of what the podcast is about.");
-        channel.setImage("http://www.theTestPodcast.com/images/testlogo.png");
+
+        Image image = new Image()
+                .setUrl("http://www.theTestPodcast.com/images/testlogo.png")
+                .setTitle("The Test Podcast Logo")
+                .setLink("http://www.theTestPodcast.com");
+        channel.setImage(image);
 
         final AtomLink atomLink = new AtomLink();
         atomLink.setHref("http://www.theTestPodcast.com/rss");
@@ -40,8 +45,16 @@ public class MarshalTest {
         channel.setOwner(owner);
         channel.setAuthor("Test Podcast Author");
         channel.setExplicit("no");
+        // TODO should be an attribute, rather than element text
         channel.setItunesImage("http://www.theTestPodcast.com/images/testlogo.png");
+
         final Category category = new Category();
+        final Category subcat1 = new Category();
+        subcat1.setText(ItunesCategory.Business.careers);
+        category.getSubcategories().add(subcat1);
+        final Category subcat2 = new Category();
+        subcat2.setText(ItunesCategory.Business.managementAndMarketing);
+        category.getSubcategories().add(subcat2);
         category.setText(ItunesCategory.Business.value());
         channel.setCategory(category); // TODO enumerate types
 

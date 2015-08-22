@@ -19,7 +19,7 @@ public class Channel {
     private String copyright;
     private String webMaster;
     private String description;
-    private String image;
+    private Image image;
 
     // Atom Fields
     private AtomLink atomLink;
@@ -112,11 +112,11 @@ public class Channel {
         return this;
     }
 
-    public String getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public Channel setImage(String image) {
+    public Channel setImage(final Image image) {
         this.image = image;
         return this;
     }
