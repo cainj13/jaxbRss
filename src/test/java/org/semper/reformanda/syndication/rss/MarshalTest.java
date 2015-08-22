@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.semper.reformanda.syndication.rss.atom.AtomLink;
 import org.semper.reformanda.syndication.rss.itunes.Category;
 import org.semper.reformanda.syndication.rss.itunes.ItunesCategory;
+import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
 import org.semper.reformanda.syndication.rss.itunes.Owner;
 
 import javax.xml.bind.JAXBContext;
@@ -46,7 +47,8 @@ public class MarshalTest {
         channel.setAuthor("Test Podcast Author");
         channel.setExplicit("no");
         // TODO should be an attribute, rather than element text
-        channel.setItunesImage("http://www.theTestPodcast.com/images/testlogo.png");
+        ItunesImage itunesImage = new ItunesImage().setHref("http://www.theTestPodcast.com/images/testlogo.png");
+        channel.setItunesImage(itunesImage);
 
         final Category category = new Category();
         final Category subcat1 = new Category();
