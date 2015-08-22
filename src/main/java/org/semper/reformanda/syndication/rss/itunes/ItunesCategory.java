@@ -7,7 +7,7 @@ public class ItunesCategory {
             return "Arts";
         }
         public static final String design = "Design";
-        public static final String fashionAndBeauty = "Fashion &amp; Beauty";
+        public static final String fashionAndBeauty = "Fashion & Beauty";
         public static final String food = "Food";
         public static final String literatur = "Literature";
         public static final String performingArts = "Performing Arts";
@@ -21,7 +21,7 @@ public class ItunesCategory {
         public static final String businessNews = "Business News";
         public static final String careers = "Careers";
         public static final String investing = "Investing";
-        public static final String managementAndMarketing = "Management &amp; Marketing";
+        public static final String managementAndMarketing = "Management & Marketing";
         public static final String shopping = "Shopping";
     }
 
@@ -36,7 +36,7 @@ public class ItunesCategory {
         public static final String k12 = "K-12";
         public static final String languageCourses = "Language Courses";
         public static final String training = "Training";
-        public static final String gamesAndHobbies = "Games &amp; Hobbies";
+        public static final String gamesAndHobbies = "Games & Hobbies";
         public static final String automotive = "Automotive";
         public static final String aviation = "Aviation";
         public static final String hobbies = "Hobbies";
@@ -46,7 +46,7 @@ public class ItunesCategory {
 
     public static class GovernmentAndOrganizations {
         public static String value() {
-            return "Government &amp; Organizations";
+            return "Government & Organizations";
         }
         public static final String  local = "Local";
         public static final String  national = "National";
@@ -59,18 +59,18 @@ public class ItunesCategory {
             return "Health";
         }
         public static final String  alternativeHealth = "Alternative Health";
-        public static final String  fitnessAndNutrition = "Fitness &amp; Nutrition";
+        public static final String  fitnessAndNutrition = "Fitness & Nutrition";
         public static final String  selfHelp = "Self-Help";
         public static final String  sexuality = "Sexuality";
     }
 
-    public static final String kidsAndFamily = "Kids &amp; Family";
+    public static final String kidsAndFamily = "Kids & Family";
     public static final String music = "Music";
-    public static final String newsAndPolitics = "News &amp; Politics";
+    public static final String newsAndPolitics = "News & Politics";
 
     public static class ReligionAndSpirituality {
         public static String value() {
-            return "Religion &amp; Spirituality";
+            return "Religion & Spirituality";
         }
         public static final String  buddhism = "Buddhism";
         public static final String  christianity = "Christianity";
@@ -83,7 +83,7 @@ public class ItunesCategory {
 
     public static class ScienceAndMedicine {
         public static String value() {
-            return "Science &amp; Medicine";
+            return "Science & Medicine";
         }
         public static final String  medicine = "Medicine";
         public static final String  naturalSciences = "Natural Sciences";
@@ -92,20 +92,20 @@ public class ItunesCategory {
 
     public static class SocietyAndCulture {
         public static String value() {
-            return "Society &amp; Culture";
+            return "Society & Culture";
         }
         public static final String  history = "History";
         public static final String  personalJournals = "Personal Journals";
         public static final String  philosophy = "Philosophy";
-        public static final String  placesAndTravel = "Places &amp; Travel";
+        public static final String  placesAndTravel = "Places & Travel";
     }
 
     public static class SportsAndRecreation {
         public static String value() {
-            return "Sports &amp; Recreation";
+            return "Sports & Recreation";
         }
         public static final String  amateur = "Amateur";
-        public static final String  collegeAndHighSchool = "College &amp; High School";
+        public static final String  collegeAndHighSchool = "College & High School";
         public static final String  outdoor = "Outdoor";
         public static final String  professional = "Professional";
     }
@@ -120,5 +120,5 @@ public class ItunesCategory {
         public static final String softwareHowTo = "Software How-To";
     }
 
-    public static final String tvAndFilm = "TV &amp; Film";
+    public static final String tvAndFilm = "TV & Film";
 }
