@@ -31,8 +31,8 @@ public class RssChannelDateFormatTest {
         final Document document = XmlUtils.getDocument(rss);
         final XpathEngine engine = XmlUtils.getXpathEngine();
 
-        NodeList matchingNodes = engine.getMatchingNodes(String.format("/rss/channel/pubDate[text()='%s']", "Sat, 01 Jan 2000 00:00:00 -0500"), document);
-        assertEquals("Improperly formatted publication date", 1, matchingNodes.getLength());
+        NodeList matchingNodes = engine.getMatchingNodes("/rss/channel/pubDate", document);
+        assertEquals(matchingNodes.item(0).getTextContent(), "Sat, 01 Jan 2000 00:00:00 -0500");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class RssChannelDateFormatTest {
         final Document document = XmlUtils.getDocument(rss);
         final XpathEngine engine = XmlUtils.getXpathEngine();
 
-        NodeList matchingNodes = engine.getMatchingNodes(String.format("/rss/channel/lastBuildDate[text()='%s']", "Sat, 01 Jan 2000 00:00:00 -0500"), document);
-        assertEquals("Improperly formatted last build date", 1, matchingNodes.getLength());
+        NodeList matchingNodes = engine.getMatchingNodes("/rss/channel/lastBuildDate", document);
+        assertEquals(matchingNodes.item(0).getTextContent(), "Sat, 01 Jan 2000 00:00:00 -0500");
     }
 }
