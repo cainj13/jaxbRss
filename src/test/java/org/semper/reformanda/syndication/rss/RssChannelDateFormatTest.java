@@ -32,7 +32,7 @@ public class RssChannelDateFormatTest {
         final XpathEngine engine = XmlUtils.getXpathEngine();
 
         NodeList matchingNodes = engine.getMatchingNodes(String.format("/rss/channel/pubDate[text()='%s']", "Sat, 01 Jan 2000 00:00:00 -0500"), document);
-        assertEquals("Could not find itunes category attribute", 1, matchingNodes.getLength());
+        assertEquals("Improperly formatted publication date", 1, matchingNodes.getLength());
     }
 
     @Test
@@ -43,6 +43,6 @@ public class RssChannelDateFormatTest {
         final XpathEngine engine = XmlUtils.getXpathEngine();
 
         NodeList matchingNodes = engine.getMatchingNodes(String.format("/rss/channel/lastBuildDate[text()='%s']", "Sat, 01 Jan 2000 00:00:00 -0500"), document);
-        assertEquals("Could not find itunes category attribute", 1, matchingNodes.getLength());
+        assertEquals("Improperly formatted last build date", 1, matchingNodes.getLength());
     }
 }
