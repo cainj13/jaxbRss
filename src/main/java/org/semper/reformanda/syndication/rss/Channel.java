@@ -4,8 +4,10 @@ import org.semper.reformanda.syndication.rss.atom.AtomLink;
 import org.semper.reformanda.syndication.rss.itunes.Category;
 import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
 import org.semper.reformanda.syndication.rss.itunes.Owner;
+import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 
 public class Channel {
@@ -50,6 +52,7 @@ public class Channel {
         return this;
     }
 
+    @XmlJavaTypeAdapter(Rfc822DateFormatAdapter.class)
     public Date getPubDate() {
         return pubDate;
     }
@@ -59,6 +62,7 @@ public class Channel {
         return this;
     }
 
+    @XmlJavaTypeAdapter(Rfc822DateFormatAdapter.class)
     public Date getLastBuildDate() {
         return lastBuildDate;
     }
