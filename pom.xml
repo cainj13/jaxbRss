@@ -9,6 +9,7 @@
     <name>JAXB RSS</name>
 
     <dependencies>
+        <!-- Just packing in some test deps to make life easier -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -19,6 +20,19 @@
             <groupId>xmlunit</groupId>
             <artifactId>xmlunit</artifactId>
             <version>1.6</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
