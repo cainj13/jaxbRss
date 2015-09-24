@@ -23,9 +23,13 @@ import org.semper.reformanda.syndication.rss.itunes.Owner;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
+import java.util.List;
 
+@XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
+    "description", "image", "owner", "author", "explicit", "itunesImage", "category", "items"})
 public class Channel {
 
     // Generic RSS fields
@@ -49,6 +53,8 @@ public class Channel {
     private String explicit; // TODO boolean/enum
     private ItunesImage itunesImage; // TODO URI?
     private Category category; // TODO sub-cats
+
+    private List<Item> items;
 
     public String getTitle() {
         return title;
@@ -200,5 +206,14 @@ public class Channel {
     public Channel setCategory(Category category) {
         this.category = category;
         return this;
+    }
+
+    @XmlElement(name = "item")
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

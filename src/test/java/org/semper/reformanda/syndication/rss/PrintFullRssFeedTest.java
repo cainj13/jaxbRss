@@ -1,12 +1,12 @@
 /**
  * Copyright 2015 Joshua Cain
- *
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p/>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,6 +25,8 @@ import org.semper.reformanda.syndication.rss.itunes.Owner;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import java.net.URI;
+import java.util.Collections;
 import java.util.Date;
 
 public class PrintFullRssFeedTest {
@@ -75,6 +77,16 @@ public class PrintFullRssFeedTest {
         category.getSubcategories().add(subcat2);
         category.setText(ItunesCategory.Business.value());
         channel.setCategory(category); // TODO enumerate types
+
+        final Item item = new Item()
+                .setPubDate(new Date())
+                .setTitle("Episode One")
+                .setDescription("The One That Made You Wish You Never Liked Start Wars in the First Place")
+                .setEnclosure(new Enclosure()
+                        .setLength(1000 * 60 * 30)
+                        .setType(MimeType.AUDIO_MPEG_MPG)
+                        .setUrl(new URI("http://www.theTestPodcast.com/episodes/1")));
+        channel.setItems(Collections.singletonList(item));
 
         final Rss rss = new Rss();
         rss.setChannel(channel);
