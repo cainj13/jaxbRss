@@ -27,12 +27,12 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.util.Date;
 
-public class MarshalTest {
+public class PrintFullRssFeedTest {
 
     private static final Date currentDate = new Date();
 
     @Test
-    public void marshalStuff() throws Exception {
+    public void demonstrateFullRssFeed() throws Exception {
         final Channel channel = new Channel();
         channel.setTitle("Test Podcast");
         channel.setLink("http://www.theTestPodcast.com");
@@ -41,7 +41,7 @@ public class MarshalTest {
         channel.setTtl(60);
         channel.setLanguage("en");
         channel.setCopyright("All Rights Reserved");
-        channel.setWebMaster("mail@theTestPodcast.com");
+        channel.setWebMaster("mail@theTestPodcast.com (podcast mail)");
         channel.setDescription("This is a test block of text, meant to give a more verbose description of what the podcast is about.");
 
         Image image = new Image()
