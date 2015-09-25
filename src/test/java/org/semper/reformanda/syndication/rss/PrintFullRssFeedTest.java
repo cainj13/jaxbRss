@@ -26,8 +26,10 @@ import org.semper.reformanda.syndication.rss.itunes.Owner;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.net.URI;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Date;
+import java.util.UUID;
 
 public class PrintFullRssFeedTest {
 
@@ -79,6 +81,7 @@ public class PrintFullRssFeedTest {
         channel.setCategory(category); // TODO enumerate types
 
         final Item item = new Item()
+                .setGuid(new URL("http://www.theTestPodcast.com"))
                 .setPubDate(new Date())
                 .setTitle("Episode One")
                 .setDescription("The One That Made You Wish You Never Liked Start Wars in the First Place")

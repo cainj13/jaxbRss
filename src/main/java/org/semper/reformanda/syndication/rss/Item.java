@@ -19,16 +19,27 @@ package org.semper.reformanda.syndication.rss;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.net.URL;
 import java.util.Date;
 
 public class Item {
 
+    private URL guid;
     private String title;
     private String description;
     private Date pubDate;
     private Enclosure enclosure;
 
-    // TODO needs a guid element to be valid
+
+    public URL getGuid() {
+        return guid;
+    }
+
+    public Item setGuid(URL guid) {
+        this.guid = guid;
+        return this;
+    }
+
     public String getTitle() {
         return title;
     }
