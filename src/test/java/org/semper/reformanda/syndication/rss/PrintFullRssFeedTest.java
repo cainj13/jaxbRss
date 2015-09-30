@@ -85,11 +85,16 @@ public class PrintFullRssFeedTest {
                 .setPubDate(new Date())
                 .setTitle("Episode One")
                 .setDescription("The One That Made You Wish You Never Liked Start Wars in the First Place")
-                .setAuthor("Test Podccast Author")
+                .setAuthor("Test Podcast Author")
+                .setSubtitle("The One That Made You Wish You Never Liked Start Wars in the First Place")
+                .setSummary("We talk about Episode One, and how they should have just stopped after the sound")
+                .setDuration("5:30")
                 .setEnclosure(new Enclosure()
                         .setLength(1000 * 60 * 30)
                         .setType(MimeType.AUDIO_MPEG_MPG)
                         .setUrl(new URI("http://www.theTestPodcast.com/episodes/1")));
+        final ItunesImage itemImage = new ItunesImage().setHref("http://www.theTestPodcast.com/images/episode1.png");
+        item.setImage(itemImage);
         channel.setItems(Collections.singletonList(item));
 
         final Rss rss = new Rss();

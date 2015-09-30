@@ -16,6 +16,7 @@
 
 package org.semper.reformanda.syndication.rss;
 
+import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -31,7 +32,13 @@ public class Item {
     private Date pubDate;
     private Enclosure enclosure;
 
+    // iTunes
     private String author;
+    private String subtitle;
+    private String summary;
+    private ItunesImage image;
+    // TODO use something like a Duration object for this...
+    private String duration;
 
     public URL getGuid() {
         return guid;
@@ -86,6 +93,46 @@ public class Item {
 
     public Item setAuthor(String author) {
         this.author = author;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public Item setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    public String getSummary() {
+        return summary;
+    }
+
+    public Item setSummary(String summary) {
+        this.summary = summary;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    public ItunesImage getImage() {
+        return image;
+    }
+
+    public Item setImage(ItunesImage image) {
+        this.image = image;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    public String getDuration() {
+        return duration;
+    }
+
+    public Item setDuration(String duration) {
+        this.duration = duration;
         return this;
     }
 }
