@@ -57,7 +57,7 @@ public class PrintFullRssFeedTest {
         final AtomLink atomLink = new AtomLink();
         atomLink.setHref("http://www.theTestPodcast.com/rss");
         atomLink.setRel("self");
-        atomLink.setType("application/xml");
+        atomLink.setType(MimeType.APPLICATION_XML_RSS);
         channel.setAtomLink(atomLink);
 
         final Owner owner = new Owner();
@@ -85,6 +85,7 @@ public class PrintFullRssFeedTest {
                 .setPubDate(new Date())
                 .setTitle("Episode One")
                 .setDescription("The One That Made You Wish You Never Liked Start Wars in the First Place")
+                .setAuthor("Test Podccast Author")
                 .setEnclosure(new Enclosure()
                         .setLength(1000 * 60 * 30)
                         .setType(MimeType.AUDIO_MPEG_MPG)

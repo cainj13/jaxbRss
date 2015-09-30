@@ -18,6 +18,7 @@ package org.semper.reformanda.syndication.rss;
 
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.net.URL;
 import java.util.Date;
@@ -30,6 +31,7 @@ public class Item {
     private Date pubDate;
     private Enclosure enclosure;
 
+    private String author;
 
     public URL getGuid() {
         return guid;
@@ -74,6 +76,16 @@ public class Item {
 
     public Item  setEnclosure(final Enclosure enclosure) {
         this.enclosure = enclosure;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    public String getAuthor() {
+        return author;
+    }
+
+    public Item setAuthor(String author) {
+        this.author = author;
         return this;
     }
 }

@@ -282,6 +282,7 @@ public enum MimeType {
     APPLICATION_XMIF_MIF("application/x-mif", ".mif"),
     APPLICATION_XMIXTRANSFER_NIX("application/x-mix-transfer", ".nix"),
     APPLICATION_XML_XML("application/xml", ".xml"),
+    APPLICATION_XML_RSS("application/xml+rss", ".xml"),
     APPLICATION_XMPLAYER2_ASX("application/x-mplayer2", ".asx"),
     APPLICATION_XMSEXCEL_XLA("application/x-msexcel", ".xla"),
     APPLICATION_XMSEXCEL_XLS("application/x-msexcel", ".xls"),

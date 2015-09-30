@@ -16,8 +16,12 @@
 
 package org.semper.reformanda.syndication.rss.atom;
 
+import org.semper.reformanda.syndication.rss.MimeType;
+import org.semper.reformanda.syndication.util.MimeTypeAdapter;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlType(namespace="http://www.w3.org/2005/Atom")
 public class AtomLink {
@@ -25,14 +29,14 @@ public class AtomLink {
     // TODO this is Stringly-typed.  Should go back and make links URLs, enumerate types, etc.
     private String href;
     private String rel;
-    private String type;
+    private MimeType type;
 
     public String getHref() {
         return href;
     }
 
     @XmlAttribute
-    public AtomLink setHref(String href) {
+    public AtomLink setHref(final String href) {
         this.href = href;
         return this;
     }
@@ -42,17 +46,18 @@ public class AtomLink {
     }
 
     @XmlAttribute
-    public AtomLink setRel(String rel) {
+    public AtomLink setRel(final String rel) {
         this.rel = rel;
         return this;
     }
 
-    public String getType() {
+    public MimeType getType() {
         return type;
     }
 
     @XmlAttribute
-    public AtomLink setType(String type) {
+    @XmlJavaTypeAdapter(MimeTypeAdapter.class)
+    public AtomLink setType(final MimeType type) {
         this.type = type;
         return this;
     }
