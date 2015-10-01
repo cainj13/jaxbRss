@@ -18,15 +18,13 @@ package org.semper.reformanda.syndication.rss;
 
 import org.junit.Test;
 import org.semper.reformanda.syndication.rss.atom.AtomLink;
-import org.semper.reformanda.syndication.rss.itunes.Category;
-import org.semper.reformanda.syndication.rss.itunes.ItunesCategory;
-import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
-import org.semper.reformanda.syndication.rss.itunes.Owner;
+import org.semper.reformanda.syndication.rss.itunes.*;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.UUID;
@@ -81,7 +79,7 @@ public class PrintFullRssFeedTest {
         channel.setCategory(category); // TODO enumerate types
 
         final Item item = new Item()
-                .setGuid(new URL("http://www.theTestPodcast.com"))
+                .setGuid(new URL("http://www.theTestPodcast.com/epidosdes/1"))
                 .setPubDate(new Date())
                 .setTitle("Episode One")
                 .setDescription("The One That Made You Wish You Never Liked Start Wars in the First Place")
@@ -95,7 +93,19 @@ public class PrintFullRssFeedTest {
                         .setUrl(new URI("http://www.theTestPodcast.com/episodes/1")));
         final ItunesImage itemImage = new ItunesImage().setHref("http://www.theTestPodcast.com/images/episode1.png");
         item.setImage(itemImage);
-        channel.setItems(Collections.singletonList(item));
+        channel.setItems(new ArrayList<Item>(Collections.singletonList(item)));
+
+        final Item blockedItem = new Item()
+                .setGuid(new URL("http://www.theTestPodcast.com/epidosdes/2"))
+                .setPubDate(new Date())
+                .setTitle("Inappropriate Episode")
+                .setDescription("Contains bad content, should be excluded from iTunes stream")
+                .setAuthor("Test Podcast Author")
+                .setSubtitle("It's a dirty one - about a white horse that falls in the mud.")
+                .setSummary("Mud, lots of mud.")
+                .setDuration("10:22")
+                .setBlock(BlockValue.YES);
+        channel.getItems().add(blockedItem);
 
         final Rss rss = new Rss();
         rss.setChannel(channel);

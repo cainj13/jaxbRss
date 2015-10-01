@@ -707,7 +707,8 @@ public enum MimeType {
         return mimeType == null ? NONE : mimeType;
     }
 
-    public static MimeType fromExtension(final String extension) {
+    // sync for lookup - HashMap not thread safe.
+    public static synchronized MimeType fromExtension(final String extension) {
         MimeType mimeType = null;
 
         if (extension != null) {
