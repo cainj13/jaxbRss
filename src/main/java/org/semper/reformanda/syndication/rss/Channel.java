@@ -18,8 +18,11 @@ package org.semper.reformanda.syndication.rss;
 
 import org.semper.reformanda.syndication.rss.atom.AtomLink;
 import org.semper.reformanda.syndication.rss.itunes.Category;
+import org.semper.reformanda.syndication.rss.itunes.Explicit;
 import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
 import org.semper.reformanda.syndication.rss.itunes.Owner;
+import org.semper.reformanda.syndication.util.BlockValueTypeAdapter;
+import org.semper.reformanda.syndication.util.ExplicityTypeAdapter;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -50,7 +53,7 @@ public class Channel {
     // iTunes Fields
     private Owner owner;
     private String author;
-    private String explicit; // TODO boolean/enum
+    private Explicit explicit;
     private ItunesImage itunesImage; // TODO URI?
     private Category category; // TODO sub-cats
 
@@ -179,11 +182,12 @@ public class Channel {
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
-    public String getExplicit() {
+    @XmlJavaTypeAdapter(ExplicityTypeAdapter.class)
+    public Explicit getExplicit() {
         return explicit;
     }
 
-    public Channel setExplicit(String explicit) {
+    public Channel setExplicit(Explicit explicit) {
         this.explicit = explicit;
         return this;
     }

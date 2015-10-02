@@ -63,7 +63,7 @@ public class PrintFullRssFeedTest {
         owner.setEmail("mail@theTestPodcast.com");
         channel.setOwner(owner);
         channel.setAuthor("Test Podcast Author");
-        channel.setExplicit("no");
+        channel.setExplicit(Explicit.CLEAN);
         // TODO should be an attribute, rather than element text
         ItunesImage itunesImage = new ItunesImage().setHref("http://www.theTestPodcast.com/images/testlogo.png");
         channel.setItunesImage(itunesImage);
@@ -104,7 +104,8 @@ public class PrintFullRssFeedTest {
                 .setSubtitle("It's a dirty one - about a white horse that falls in the mud.")
                 .setSummary("Mud, lots of mud.")
                 .setDuration("10:22")
-                .setBlock(BlockValue.YES);
+                .setBlock(BlockValue.YES)
+                .setExplicit(Explicit.YES);
         channel.getItems().add(blockedItem);
 
         final Rss rss = new Rss();

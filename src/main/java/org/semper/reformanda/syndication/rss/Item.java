@@ -17,8 +17,10 @@
 package org.semper.reformanda.syndication.rss;
 
 import org.semper.reformanda.syndication.rss.itunes.BlockValue;
+import org.semper.reformanda.syndication.rss.itunes.Explicit;
 import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
 import org.semper.reformanda.syndication.util.BlockValueTypeAdapter;
+import org.semper.reformanda.syndication.util.ExplicityTypeAdapter;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -42,6 +44,7 @@ public class Item {
     // TODO use something like a Duration object for this...
     private String duration;
     private BlockValue block;
+    private Explicit explicit;
 
     public URL getGuid() {
         return guid;
@@ -147,6 +150,17 @@ public class Item {
 
     public Item setBlock(final BlockValue block) {
         this.block = block;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    @XmlJavaTypeAdapter(ExplicityTypeAdapter.class)
+    public Explicit getExplicit() {
+        return explicit;
+    }
+
+    public Item setExplicit(final Explicit explicit) {
+        this.explicit = explicit;
         return this;
     }
 }
