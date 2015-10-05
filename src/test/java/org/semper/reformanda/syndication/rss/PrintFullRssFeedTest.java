@@ -76,7 +76,8 @@ public class PrintFullRssFeedTest {
         category.getSubcategories().add(subcat2);
         category.setText(ItunesCategory.Business.value());
         channel.setCategory(category); // TODO enumerate types
-        channel.setComplete(YesNo.NO);
+        channel.setComplete(YesNo.YES);
+        channel.setNewFeedUrl(new URL("http://www.theNEWTestPodcast.com/"));
 
         final Item item = new Item()
                 .setGuid(new URL("http://www.theTestPodcast.com/epidosdes/1"))

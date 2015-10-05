@@ -25,11 +25,12 @@ import org.semper.reformanda.syndication.util.YesNoTypeAdapter;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
 @XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
-    "description", "image", "owner", "author", "explicit", "itunesImage", "category", "complete", "items"})
+    "description", "image", "owner", "author", "explicit", "itunesImage", "category", "complete", "newFeedUrl", "items"})
 public class Channel {
 
     // Generic RSS fields
@@ -54,6 +55,7 @@ public class Channel {
     private ItunesImage itunesImage; // TODO URI?
     private Category category; // TODO sub-cats
     private YesNo complete;
+    private URL newFeedUrl; // TODO test unmarshalling of a URL - might need a mapper here
 
     private List<Item> items;
 
@@ -227,6 +229,16 @@ public class Channel {
 
     public Channel setComplete(final YesNo complete) {
         this.complete = complete;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd", name = "new-feed-url")
+    public URL getNewFeedUrl() {
+        return newFeedUrl;
+    }
+
+    public Channel setNewFeedUrl(final URL newFeedUrl) {
+        this.newFeedUrl = newFeedUrl;
         return this;
     }
 }
