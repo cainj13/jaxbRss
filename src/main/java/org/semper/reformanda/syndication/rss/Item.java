@@ -30,11 +30,16 @@ import java.util.Date;
 
 public class Item {
 
-    private URL guid;
     private String title;
+    // TODO link
     private String description;
-    private Date pubDate;
+    // TODO author
+    // TODO category
+    // TODO comments
     private Enclosure enclosure;
+    private URL guid;
+    private Date pubDate;
+    // TODO source
 
     // iTunes
     private String author;

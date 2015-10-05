@@ -29,21 +29,38 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Built from the following specifications:
+ *
+ * RSS Spec: http://cyber.law.harvard.edu/rss/rss.html
+ * ATOM Spec: https://tools.ietf.org/html/rfc4287
+ * Itunes Spec: http://www.apple.com/itunes/podcasts/specs.html
+ */
 @XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
     "description", "image", "owner", "author", "explicit", "itunesImage", "category", "complete", "newFeedUrl", "items"})
 public class Channel {
 
-    // Generic RSS fields
+    // Generic RSS fields - REQUIRED
     private String title;
     private String link;
-    private Date pubDate;
-    private Date lastBuildDate;
-    private int ttl;
+    private String description;
+    // Generic RSS fields - OPTIONAL
     private String language;
     private String copyright;
+    // TODO managingEditor
     private String webMaster;
-    private String description;
+    private Date pubDate;
+    private Date lastBuildDate;
+    // TODO RSS Cateogry?
+    // TODO generator
+    // TODO docs http://blogs.law.harvard.edu/tech/rss
+    // TODO cloud
+    private int ttl;
     private Image image;
+    // TODO rating
+    // TODO textInput
+    // TODO skip hours
+    // TODO skip days
 
     // Atom Fields
     private AtomLink atomLink;
