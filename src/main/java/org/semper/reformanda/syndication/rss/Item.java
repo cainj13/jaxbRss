@@ -46,6 +46,8 @@ public class Item {
     private YesNo block;
     private Explicit explicit;
     private YesNo isClosedCaptioned;
+    // TODO itunes order.  ughh.
+
 
     public URL getGuid() {
         return guid;

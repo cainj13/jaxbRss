@@ -17,12 +17,10 @@
 package org.semper.reformanda.syndication.rss;
 
 import org.semper.reformanda.syndication.rss.atom.AtomLink;
-import org.semper.reformanda.syndication.rss.itunes.Category;
-import org.semper.reformanda.syndication.rss.itunes.Explicit;
-import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
-import org.semper.reformanda.syndication.rss.itunes.Owner;
+import org.semper.reformanda.syndication.rss.itunes.*;
 import org.semper.reformanda.syndication.util.ExplicityTypeAdapter;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
+import org.semper.reformanda.syndication.util.YesNoTypeAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
@@ -31,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 
 @XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
-    "description", "image", "owner", "author", "explicit", "itunesImage", "category", "items"})
+    "description", "image", "owner", "author", "explicit", "itunesImage", "category", "complete", "items"})
 public class Channel {
 
     // Generic RSS fields
@@ -55,6 +53,7 @@ public class Channel {
     private Explicit explicit;
     private ItunesImage itunesImage; // TODO URI?
     private Category category; // TODO sub-cats
+    private YesNo complete;
 
     private List<Item> items;
 
@@ -218,5 +217,16 @@ public class Channel {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    @XmlJavaTypeAdapter(YesNoTypeAdapter.class)
+    public YesNo getComplete() {
+        return complete;
+    }
+
+    public Channel setComplete(final YesNo complete) {
+        this.complete = complete;
+        return this;
     }
 }
