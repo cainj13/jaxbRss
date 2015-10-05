@@ -27,7 +27,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.UUID;
 
 public class PrintFullRssFeedTest {
 
@@ -87,6 +86,7 @@ public class PrintFullRssFeedTest {
                 .setSubtitle("The One That Made You Wish You Never Liked Start Wars in the First Place")
                 .setSummary("We talk about Episode One, and how they should have just stopped after the sound")
                 .setDuration("5:30")
+                .setIsClosedCaptioned(YesNo.NO)
                 .setEnclosure(new Enclosure()
                         .setLength(1000 * 60 * 30)
                         .setType(MimeType.AUDIO_MPEG_MPG)
@@ -104,7 +104,8 @@ public class PrintFullRssFeedTest {
                 .setSubtitle("It's a dirty one - about a white horse that falls in the mud.")
                 .setSummary("Mud, lots of mud.")
                 .setDuration("10:22")
-                .setBlock(BlockValue.YES)
+                .setIsClosedCaptioned(YesNo.YES)
+                .setBlock(YesNo.YES)
                 .setExplicit(Explicit.YES);
         channel.getItems().add(blockedItem);
 

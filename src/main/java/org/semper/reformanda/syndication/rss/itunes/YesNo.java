@@ -16,22 +16,22 @@
 
 package org.semper.reformanda.syndication.rss.itunes;
 
-public enum BlockValue {
+public enum YesNo {
     YES("yes"),
     NO("no");
 
     private final String textRepresentation;
 
-    private BlockValue(final String textRepresentation) {
+    private YesNo(final String textRepresentation) {
         this.textRepresentation = textRepresentation;
     }
 
     /**
-     * @param blockValueText input text
+     * @param yesNoText input text
      * @return <code>YES</code> if the input string matches the text value for <code>YES</code>.  Otherwise <code>NO</code>.
      */
-    public static BlockValue fromText(final String blockValueText) {
-        return YES.toString().equals(blockValueText) ? YES : NO;
+    public static YesNo fromText(final String yesNoText) {
+        return YES.toString().equals(yesNoText) ? YES : NO;
     }
 
     @Override

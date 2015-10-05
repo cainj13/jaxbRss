@@ -21,7 +21,6 @@ import org.semper.reformanda.syndication.rss.itunes.Category;
 import org.semper.reformanda.syndication.rss.itunes.Explicit;
 import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
 import org.semper.reformanda.syndication.rss.itunes.Owner;
-import org.semper.reformanda.syndication.util.BlockValueTypeAdapter;
 import org.semper.reformanda.syndication.util.ExplicityTypeAdapter;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 

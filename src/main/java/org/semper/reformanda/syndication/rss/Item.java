@@ -16,10 +16,10 @@
 
 package org.semper.reformanda.syndication.rss;
 
-import org.semper.reformanda.syndication.rss.itunes.BlockValue;
+import org.semper.reformanda.syndication.rss.itunes.YesNo;
 import org.semper.reformanda.syndication.rss.itunes.Explicit;
 import org.semper.reformanda.syndication.rss.itunes.ItunesImage;
-import org.semper.reformanda.syndication.util.BlockValueTypeAdapter;
+import org.semper.reformanda.syndication.util.YesNoTypeAdapter;
 import org.semper.reformanda.syndication.util.ExplicityTypeAdapter;
 import org.semper.reformanda.syndication.util.Rfc822DateFormatAdapter;
 
@@ -43,8 +43,9 @@ public class Item {
     private ItunesImage image;
     // TODO use something like a Duration object for this...
     private String duration;
-    private BlockValue block;
+    private YesNo block;
     private Explicit explicit;
+    private YesNo isClosedCaptioned;
 
     public URL getGuid() {
         return guid;
@@ -143,12 +144,12 @@ public class Item {
     }
 
     @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
-    @XmlJavaTypeAdapter(BlockValueTypeAdapter.class)
-    public BlockValue getBlock() {
+    @XmlJavaTypeAdapter(YesNoTypeAdapter.class)
+    public YesNo getBlock() {
         return block;
     }
 
-    public Item setBlock(final BlockValue block) {
+    public Item setBlock(final YesNo block) {
         this.block = block;
         return this;
     }
@@ -161,6 +162,17 @@ public class Item {
 
     public Item setExplicit(final Explicit explicit) {
         this.explicit = explicit;
+        return this;
+    }
+
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    @XmlJavaTypeAdapter(YesNoTypeAdapter.class)
+    public YesNo getIsClosedCaptioned() {
+        return isClosedCaptioned;
+    }
+
+    public Item setIsClosedCaptioned(final YesNo isClosedCaptioned) {
+        this.isClosedCaptioned = isClosedCaptioned;
         return this;
     }
 }
