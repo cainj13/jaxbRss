@@ -25,6 +25,7 @@ import org.semper.reformanda.syndication.util.YesNoTypeAdapter;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +39,8 @@ import java.util.List;
  */
 // TODO group these according to where they come from...
 @XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
-    "managingEditor", "description", "image", "generator", "owner", "author", "explicit", "itunesImage", "category", "complete", "newFeedUrl", "items"})
+    "managingEditor", "description", "image", "generator", "docs", "owner", "author", "explicit", "itunesImage", "category",
+        "complete", "newFeedUrl", "items"})
 public class Channel {
 
     // Generic RSS fields - REQUIRED
@@ -54,7 +56,7 @@ public class Channel {
     private Date lastBuildDate;
     // TODO RSS Cateogry?
     private String generator = "jaxbRss by Josh Cain";
-    // TODO docs http://blogs.law.harvard.edu/tech/rss
+    private URL docs;
     // TODO cloud
     private int ttl;
     private Image image;
@@ -76,6 +78,14 @@ public class Channel {
     private URL newFeedUrl; // TODO test unmarshalling of a URL - might need a mapper here
 
     private List<Item> items;
+
+    public Channel() {
+        try {
+            docs = new URL("http://blogs.law.harvard.edu/tech/rss");
+        } catch (MalformedURLException e) {
+            // should never happen, but if we don't have a "docs" element, no one really cares.
+        }
+    }
 
     public String getTitle() {
         return title;
@@ -275,6 +285,15 @@ public class Channel {
 
     public Channel setGenerator(final String generator) {
         this.generator = generator;
+        return this;
+    }
+
+    public URL getDocs() {
+        return docs;
+    }
+
+    public Channel setDocs(final URL docs) {
+        this.docs = docs;
         return this;
     }
 }
