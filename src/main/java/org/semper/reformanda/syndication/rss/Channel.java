@@ -36,8 +36,9 @@ import java.util.List;
  * ATOM Spec: https://tools.ietf.org/html/rfc4287
  * Itunes Spec: http://www.apple.com/itunes/podcasts/specs.html
  */
+// TODO group these according to where they come from...
 @XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
-    "description", "image", "owner", "author", "explicit", "itunesImage", "category", "complete", "newFeedUrl", "items"})
+    "managingEditor", "description", "image", "owner", "author", "explicit", "itunesImage", "category", "complete", "newFeedUrl", "items"})
 public class Channel {
 
     // Generic RSS fields - REQUIRED
@@ -47,7 +48,7 @@ public class Channel {
     // Generic RSS fields - OPTIONAL
     private String language;
     private String copyright;
-    // TODO managingEditor
+    private String managingEditor;
     private String webMaster;
     private Date pubDate;
     private Date lastBuildDate;
@@ -256,6 +257,15 @@ public class Channel {
 
     public Channel setNewFeedUrl(final URL newFeedUrl) {
         this.newFeedUrl = newFeedUrl;
+        return this;
+    }
+
+    public String getManagingEditor() {
+        return managingEditor;
+    }
+
+    public Channel setManagingEditor(final String managingEditor) {
+        this.managingEditor = managingEditor;
         return this;
     }
 }
