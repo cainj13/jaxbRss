@@ -38,7 +38,7 @@ import java.util.List;
  */
 // TODO group these according to where they come from...
 @XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
-    "managingEditor", "description", "image", "owner", "author", "explicit", "itunesImage", "category", "complete", "newFeedUrl", "items"})
+    "managingEditor", "description", "image", "generator", "owner", "author", "explicit", "itunesImage", "category", "complete", "newFeedUrl", "items"})
 public class Channel {
 
     // Generic RSS fields - REQUIRED
@@ -53,7 +53,7 @@ public class Channel {
     private Date pubDate;
     private Date lastBuildDate;
     // TODO RSS Cateogry?
-    // TODO generator
+    private String generator = "jaxbRss by Josh Cain";
     // TODO docs http://blogs.law.harvard.edu/tech/rss
     // TODO cloud
     private int ttl;
@@ -266,6 +266,15 @@ public class Channel {
 
     public Channel setManagingEditor(final String managingEditor) {
         this.managingEditor = managingEditor;
+        return this;
+    }
+
+    public String getGenerator() {
+        return generator;
+    }
+
+    public Channel setGenerator(final String generator) {
+        this.generator = generator;
         return this;
     }
 }
