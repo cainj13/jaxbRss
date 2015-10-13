@@ -38,10 +38,12 @@ import java.util.List;
  * Itunes Spec: http://www.apple.com/itunes/podcasts/specs.html
  */
 // TODO group these according to where they come from...
-@XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "ttl", "language", "copyright", "webMaster",
-    "managingEditor", "description", "image", "generator", "docs", "owner", "author", "explicit", "itunesImage", "category",
+@XmlType(propOrder = {"title", "link", "atomLink", "pubDate", "lastBuildDate", "category", "ttl", "language", "copyright", "webMaster",
+    "managingEditor", "description", "image", "generator", "docs", "owner", "author", "explicit", "itunesImage", "itunesCategory",
         "complete", "newFeedUrl", "items"})
 public class Channel {
+
+    // TODO required vs non-required fields
 
     // Generic RSS fields - REQUIRED
     private String title;
@@ -54,7 +56,7 @@ public class Channel {
     private String webMaster;
     private Date pubDate;
     private Date lastBuildDate;
-    // TODO RSS Cateogry?
+    private List<Category> category;
     private String generator = "jaxbRss by Josh Cain";
     private URL docs;
     // TODO cloud
@@ -73,7 +75,7 @@ public class Channel {
     private String author;
     private Explicit explicit;
     private ItunesImage itunesImage; // TODO URI?
-    private Category category; // TODO sub-cats
+    private ItunesCategory itunesCategory; // TODO sub-cats
     private YesNo complete;
     private URL newFeedUrl; // TODO test unmarshalling of a URL - might need a mapper here
 
@@ -122,6 +124,15 @@ public class Channel {
 
     public Channel setLastBuildDate(Date lastBuildDate) {
         this.lastBuildDate = lastBuildDate;
+        return this;
+    }
+
+    public List<Category> getCategory() {
+        return category;
+    }
+
+    public Channel setCategory(List<Category> category) {
+        this.category = category;
         return this;
     }
 
@@ -230,13 +241,13 @@ public class Channel {
         return this;
     }
 
-    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd")
-    public Category getCategory() {
-        return category;
+    @XmlElement(namespace = "http://www.itunes.com/dtds/podcast-1.0.dtd", name="category")
+    public ItunesCategory getItunesCategory() {
+        return itunesCategory;
     }
 
-    public Channel setCategory(Category category) {
-        this.category = category;
+    public Channel setItunesCategory(ItunesCategory itunesCategory) {
+        this.itunesCategory = itunesCategory;
         return this;
     }
 

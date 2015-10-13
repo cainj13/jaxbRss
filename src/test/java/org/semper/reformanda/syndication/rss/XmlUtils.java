@@ -25,6 +25,7 @@ import org.w3c.dom.Document;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
@@ -33,9 +34,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.Collections;
 
 import org.apache.logging.log4j.Logger;
@@ -60,6 +59,15 @@ public class XmlUtils {
         jaxbMarshaller.marshal(objectToMarshal, document);
 
         return document;
+    }
+
+    public static <T> T unmarshalString(final String string, final Class<T> clazz) throws JAXBException {
+        return unmarshalObject(new ByteArrayInputStream(string.getBytes()), clazz);
+    }
+
+    public static <T> T unmarshalObject(final InputStream input, final Class<T> clazz) throws JAXBException {
+        Unmarshaller unmarshaller = JAXBContext.newInstance(clazz).createUnmarshaller();
+        return (T) unmarshaller.unmarshal(input);
     }
 
     public static void printDocument(final Document doc) throws IOException, TransformerException {

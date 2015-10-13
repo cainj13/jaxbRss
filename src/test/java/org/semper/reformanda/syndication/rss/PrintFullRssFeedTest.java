@@ -43,7 +43,8 @@ public class PrintFullRssFeedTest {
         channel.setLanguage("en");
         channel.setCopyright("All Rights Reserved");
         channel.setWebMaster("mail@theTestPodcast.com (podcast mail)");
-        channel.setDescription("This is a test block of text, meant to give a more verbose description of what the podcast is about.");
+        channel.setDescription("This is a test block of text, meant to give a more verbose description of what the podcast is about.")
+            .setCategory(Collections.singletonList(new Category().setTextValue("Category 1").setDomain("http://www.theTestPodcast.com/categories/test")));
 
         Image image = new Image()
                 .setUrl("http://www.theTestPodcast.com/images/testlogo.png")
@@ -67,15 +68,15 @@ public class PrintFullRssFeedTest {
         ItunesImage itunesImage = new ItunesImage().setHref("http://www.theTestPodcast.com/images/testlogo.png");
         channel.setItunesImage(itunesImage);
 
-        final Category category = new Category();
-        final Category subcat1 = new Category();
-        subcat1.setText(ItunesCategory.Business.careers);
-        category.getSubcategories().add(subcat1);
-        final Category subcat2 = new Category();
-        subcat2.setText(ItunesCategory.Business.managementAndMarketing);
-        category.getSubcategories().add(subcat2);
-        category.setText(ItunesCategory.Business.value());
-        channel.setCategory(category); // TODO enumerate types
+        final ItunesCategory itunesCategory = new ItunesCategory();
+        final ItunesCategory subcat1 = new ItunesCategory();
+        subcat1.setText(ItunesCategoryNames.Business.careers);
+        itunesCategory.getSubcategories().add(subcat1);
+        final ItunesCategory subcat2 = new ItunesCategory();
+        subcat2.setText(ItunesCategoryNames.Business.managementAndMarketing);
+        itunesCategory.getSubcategories().add(subcat2);
+        itunesCategory.setText(ItunesCategoryNames.Business.value());
+        channel.setItunesCategory(itunesCategory); // TODO enumerate types
         channel.setComplete(YesNo.YES);
         channel.setNewFeedUrl(new URL("http://www.theNEWTestPodcast.com/"))
             .setManagingEditor("editor@theTestPodcast.com");

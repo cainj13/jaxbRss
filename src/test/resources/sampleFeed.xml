@@ -3,7 +3,7 @@
     <channel>
         <atom:link href="http://www.mySampleRss.com" rel="self" type="application/xml"/>
         <itunes:author>Test Podcast Author</itunes:author>
-        <itunes:category>Business</itunes:category>
+        <itunes:itunesCategory>Business</itunes:itunesCategory>
         <copyright>All Rights Reserved</copyright>
         <description>This is a test podcast syndication XML sample meant to demonstrate basic marshalling/unmarshalling functionality</description>
         <itunes:explicit>no</itunes:explicit>
